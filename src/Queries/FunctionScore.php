@@ -55,7 +55,7 @@ class FunctionScore implements Query
     {
         return array_filter(
             [
-                'query' => $this->query->toArray(),
+                'query' => $this->query?->toArray(),
                 'functions' => $this->functions,
                 'score_mode' => $this->scoreMode,
                 'boost_mode' => $this->boostMode,
