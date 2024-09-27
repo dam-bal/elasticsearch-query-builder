@@ -16,12 +16,15 @@ abstract class AbstractFunctionScoreFunction implements FunctionScoreFunction
 
     public function toArray(): array
     {
-        return array_filter(
-            [
-                'filter' => $this->filter?->toArray(),
-                'weight' => $this->weight,
-                $this->getFunctionName() => $this->buildFunction(),
-            ]
-        );
+        $data = [
+            'filter' => $this->filter?->toArray(),
+            'weight' => $this->weight,
+        ];
+
+        if ($this->getFunctionName()) {
+            $data[$this->getFunctionName()] = $this->buildFunction();
+        }
+
+        return array_filter($data);
     }
 }
