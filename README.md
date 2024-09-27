@@ -124,6 +124,17 @@ $nestedQuery->innerHits(
 );
 ```
 
+#### `FunctionScore`
+
+[https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html)
+
+```php
+\Spatie\ElasticsearchQueryBuilder\Queries\FunctionScore::create()
+    ->addFunction(\Spatie\ElasticsearchQueryBuilder\Queries\FunctionScore\RandomScore::create(123, 'test_field'))
+    ->addFunction(\Spatie\ElasticsearchQueryBuilder\Queries\FunctionScore\FieldValueFactor::create('test_field')->factor(2.0))
+    ->addFunction(\Spatie\ElasticsearchQueryBuilder\Queries\FunctionScore\Weight::create(2.0));
+```
+
 #### `RangeQuery`
 
 [https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html)
